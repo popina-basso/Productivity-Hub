@@ -1,0 +1,123 @@
+/* Style de la carte principale en verre dépoli sombre */
+.carte-verre {
+  width: 100%;
+  max-width: 440px; 
+  padding: 50px 40px; /* On augmente les espaces intérieurs pour donner du volume */
+  background: rgba(255, 255, 255, 0.03); 
+  border-radius: 20px; 
+  border: 1px solid rgba(255, 255, 255, 0.1); 
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px); 
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  z-index: 10; 
+  transition: all 0.3s ease;
+}
+
+/* Le titre principal du formulaire */
+.titre-form {
+  color: #ffffff;
+  text-align: center;
+  font-size: 2.5rem; 
+  margin-bottom: 40px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+/* Alignement et design des lignes de saisie */
+.input-group {
+  display: flex;
+  align-items: center; 
+  width: 100%;
+  margin-bottom: 25px; /* Plus d'espace entre les champs pour respirer */
+  background: rgba(255, 255, 255, 0.05); 
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+/* Effet lumineux fuchsia au clic */
+.input-group:focus-within {
+  border-color: #ff007f;
+  box-shadow: 0 0 15px rgba(255, 0, 127, 0.3);
+}
+
+/* Style des émojis icônes */
+.icone {
+  padding: 15px; /* Plus d'espace autour des icônes */
+  font-size: 1.2rem;
+  opacity: 0.6;
+}
+
+/* Style de la zone de texte invisible */
+.input-group input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 15px 10px 15px 0px; /* Champs plus hauts et plus confortables à cliquer */
+  color: #ffffff; 
+  font-size: 1rem;
+}
+
+.input-group input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* Le bouton dégradé avec effet de survol */
+.btn-form {
+  width: 100%;
+  padding: 16px; /* Bouton plus grand et plus imposant */
+  margin-top: 20px;
+  border: none;
+  outline: none;
+  border-radius: 30px;
+  background: linear-gradient(90deg, #ff007f 0%, #7000ff 100%); 
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-form:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(255, 0, 127, 0.6);
+}
+
+.btn-form:active {
+  transform: translateY(0px);
+}
+
+/* Style du petit texte de bascule tout en bas */
+.texte-bascule {
+  color: rgba(255, 255, 255, 0.6);
+  text-align: center;
+  margin-top: 25px;
+  font-size: 0.9rem;
+}
+
+.lien-cliquable {
+  color: #ff007f;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+  margin-left: 5px;
+  transition: color 0.2s;
+}
+
+.lien-cliquable:hover {
+  color: #7000ff;
+}
+
+/* ADAPTATION MOBILE (Responsive Design) 📱 */
+@media (max-width: 480px) {
+  .carte-verre {
+    width: 90%; /* Prend presque tout l'écran sur mobile avec une petite marge */
+    padding: 35px 20px; /* On réduit un peu les espaces pour que ça tienne sur petit écran */
+  }
+  
+  .titre-form {
+    font-size: 2rem;
+    margin-bottom: 30px;
+  }
+}

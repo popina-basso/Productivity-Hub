@@ -1,0 +1,98 @@
+/* 1. Définition des Palettes de Couleurs (Variables) */
+:root {
+  /* Palette Mode Sombre (Cyber Premium) */
+  --bg-gradient: linear-gradient(135deg, #090919 0%, #161233 100%);
+  --cercle-1: #ff007f;
+  --cercle-2: #7000ff;
+  --cercle-3: #06b6d4;
+  --texte-principal: #ffffff;
+  --texte-secondaire: rgba(255, 255, 255, 0.6);
+  --carte-fond: rgba(255, 255, 255, 0.03);
+  --carte-bordure: rgba(255, 255, 255, 0.1);
+  --ombre-globale: 0 30px 60px rgba(0, 0, 0, 0.6); /* Ombre sombre renforcée */
+}
+
+[data-theme="light"] {
+  /* Palette Mode Clair : ORANGE EXTRA-INTENSE ET LUMINEUX ☀️ */
+  --bg-gradient: linear-gradient(135deg, #ff7b00 0%, #ff5500 50%, #cc3300 100%);
+  --cercle-1: #ffea00; /* Cercles jaunes électriques pour contraster */
+  --cercle-2: #ff007f;
+  --cercle-3: #ffffff;
+  --texte-principal: #0f172a;
+  --texte-secondaire: #3b0712; /* Marron/Orange ultra foncé pour la lisibilité */
+  --carte-fond: rgba(255, 255, 255, 0.15); /* Verre plus blanc pour ressortir sur l'orange */
+  --carte-bordure: rgba(255, 255, 255, 0.4);
+  --ombre-globale: 0 35px 70px rgba(74, 13, 0, 0.5); /* Ombre chaude renforcée */
+}
+
+/* 2. Forçage Plein Écran Absolu */
+html, body, #root {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  background-color: #090919;
+  transition: background-color 0.5s ease;
+}
+
+.app-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--bg-gradient);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  transition: background 0.5s ease;
+}
+
+/* 3. Sphères Lumineuses Floues */
+.cercle {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  z-index: 1;
+  opacity: 0.65;
+  animation: floutageAmbiant 10s infinite alternate ease-in-out;
+}
+
+.cercle-rose-top {
+  width: 200px;
+  height: 200px;
+  background: var(--cercle-1);
+  top: 5%;
+  left: 10%;
+}
+
+.cercle-violet-blur {
+  width: 500px;
+  height: 500px;
+  background: var(--cercle-2);
+  bottom: -15%;
+  right: -10%;
+}
+
+.cercle-cyan-middle {
+  width: 160px;
+  height: 160px;
+  background: var(--cercle-3);
+  top: 25%;
+  right: 15%;
+}
+
+@keyframes floutageAmbiant {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(20px, -25px) scale(1.1); }
+  100% { transform: translate(-15px, 15px) scale(0.95); }
+}
+
+.app-container h1, .app-container h2, .app-container p, .app-container span, .app-container input {
+  font-family: 'Poppins', 'Segoe UI', sans-serif;
+}
+
+  

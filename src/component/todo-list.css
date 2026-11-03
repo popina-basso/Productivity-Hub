@@ -1,0 +1,404 @@
+/* 1. CONTENEUR GÉANT DU DASHBOARD */
+.dashboard-container-verre {
+  width: 90vw;
+  max-width: 1400px;
+  height: 85vh;
+  padding: 35px;
+  background: var(--carte-fond);
+  border: 1px solid var(--carte-bordure);
+  border-radius: 24px;
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  box-shadow: var(--ombre-globale); /* Application de l'ombre renforcée */
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+.dashboard-container-verre:hover {
+  transform: translateY(-6px);
+  border-color: rgba(255, 255, 255, 0.35);
+  box-shadow: 0 45px 80px rgba(0, 0, 0, 0.65);
+}
+
+.todo-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 20px;
+}
+
+.titre-section h1 {
+  color: var(--texte-principal);
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin-bottom: 15px; /* Éloigne le titre H1 du paragraphe ! */
+}
+
+.msg-bienvenue {
+  color: var(--texte-secondaire);
+  font-size: 1.05rem;
+  font-weight: 500;
+}
+
+/* Grosse barre de recherche */
+.barre-recherche {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--carte-bordure);
+  border-radius: 14px;
+  overflow: hidden;
+  width: 420px; /* Barre de recherche beaucoup plus grande ! */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.barre-recherche input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 16px 20px; /* Textes et champs agrandis */
+  color: var(--texte-principal);
+  font-size: 1.05rem;
+}
+
+.btn-loupe {
+  background: transparent;
+  border: none;
+  padding: 0 20px;
+  cursor: pointer;
+  font-size: 1.3rem;
+}
+
+.todo-main-1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.btn-theme-toggle {
+  background: linear-gradient(90deg, #ff007f 0%, #7000ff 100%);
+  color: #ffffff;
+  border: none;
+  outline: none;
+  padding: 12px 24px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(255, 0, 127, 0.35);
+  transition: transform 0.2s;
+}
+
+.btn-theme-toggle:hover { transform: translateY(-2px); }
+
+.horloge-bloc {
+  color: var(--texte-principal);
+  font-size: 1.15rem;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 10px 22px;
+  border-radius: 12px;
+  border: 1px solid var(--carte-bordure);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.heure-texte {
+  font-variant-numeric: tabular-nums; /* Empêche les chiffres de sauter pendant le défilement */
+}
+
+.separateur { margin: 0 12px; opacity: 0.3; }
+
+.zone-saisie-tache {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.zone-saisie-tache input {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--carte-bordure);
+  border-radius: 14px;
+  padding: 18px;
+  color: var(--texte-principal);
+  font-size: 1.05rem;
+  outline: none;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn-ajouter-tache {
+  background: linear-gradient(90deg, #ff007f 0%, #7000ff 100%);
+  color: #ffffff;
+  border: none;
+  width: 60px;
+  height: 60px;
+  border-radius: 14px;
+  font-size: 2rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 6px 20px rgba(255, 0, 127, 0.4);
+  transition: all 0.2s;
+}
+
+.btn-ajouter-tache:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255, 0, 127, 0.5);
+}
+
+/* 4. LE COEUR (Grille & Lignes) */
+.todo-coeur-layout {
+  display: flex;
+  gap: 30px;
+  flex: 1;
+  overflow: hidden;
+}
+
+.colonne-liste-taches {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.colonne-liste-taches h3, .colonne-kanban-board h3 {
+  color: var(--texte-principal);
+  font-size: 1.3rem;
+  margin-bottom: 18px;
+}
+
+.liste-principale { list-style: none; overflow-y: auto; }
+
+.tache-item {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--carte-bordure);
+  border-radius: 14px;
+  padding: 16px 22px;
+  margin-bottom: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15); /* Ombre sur chaque ligne */
+}
+
+.tache-gauche {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  color: var(--texte-principal);
+  font-size: 1.05rem;
+}
+
+.tache-gauche input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.tache-item.barree { opacity: 0.35; text-decoration: line-through; }
+
+.tache-actions { display: flex; gap: 8px; }
+
+.btn-action-tache {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--carte-bordure);
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.1rem;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn-action-tache:hover { transform: scale(1.1); }
+.btn-comm:hover { border-color: #0ea5e9; background: rgba(14, 165, 233, 0.15); }
+.btn-edit:hover { border-color: #f59e0b; background: rgba(245, 158, 11, 0.15); }
+.btn-suppr:hover { border-color: #ef4444; background: rgba(239, 68, 68, 0.15); }
+
+/* 5. KANBAN */
+.colonne-kanban-board {
+  flex: 1.2;
+  display: flex;
+  flex-direction: column;
+}
+
+.kanban-colonnes-container { display: flex; gap: 15px; flex: 1; }
+
+.kanban-colonne {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--carte-bordure);
+  border-radius: 16px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.kanban-colonne h4 {
+  color: var(--texte-principal);
+  font-size: 1rem;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.kanban-zone-taches { flex: 1; padding: 5px; overflow-y: auto; }
+
+.kanban-badge-tache {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--carte-bordure);
+  padding: 10px 14px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+  color: var(--texte-principal);
+  word-break: break-word;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.tache-kanban-barree { opacity: 0.5; text-decoration: line-through; }
+.erreur-recherche { color: var(--texte-secondaire); text-align: center; margin-top: 20px; font-style: italic; }
+.input-edition-ligne { background: rgba(255, 255, 255, 0.1) !important; border: 1px solid #f59e0b !important; color: #fff !important; padding: 6px 10px; border-radius: 6px; outline: none; font-size: 1rem; }
+
+/* 6. POP-UP MODAL EN LÉVITATION */
+.modal-overlay-sombre {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(4, 4, 12, 0.5);
+  backdrop-filter: blur(12px);
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-verre-commentaires {
+  width: 460px;
+  background: rgba(20, 20, 35, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 35px;
+  border-radius: 24px;
+  color: #fff;
+  box-shadow: 0 35px 80px rgba(0, 0, 0, 0.8), 0 0 50px rgba(255, 0, 127, 0.2);
+  animation: lévitationPopup 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards, flottementContinu 5s infinite alternate ease-in-out 0.4s;
+}
+
+@keyframes lévitationPopup { 0% { opacity: 0; transform: translateY(30px) scale(0.95); } 100% { opacity: 1; transform: translateY(0) scale(1); } }
+@keyframes flottementContinu { 0% { transform: translateY(0px); } 100% { transform: translateY(-8px); } }
+
+.popup-verre-commentaires h3 { font-size: 1.3rem; margin-bottom: 20px; }
+.popup-verre-commentaires h3 span { color: #0ea5e9; font-size: 1rem; }
+.zone-affichage-commentaires { height: 150px; overflow-y: auto; background: rgba(255, 255, 255, 0.03); border-radius: 10px; padding: 15px; margin-bottom: 20px; border: 1px solid rgba(255, 255, 255, 0.05); }
+.commentaire-bulle { font-size: 0.9rem; margin-bottom: 10px; color: rgba(255, 255, 255, 0.9); }
+.aucun-comm { color: rgba(255, 255, 255, 0.4); font-size: 0.9rem; text-align: center; margin-top: 40px; }
+.form-ajouter-commentaire { display: flex; gap: 10px; margin-bottom: 20px; }
+.form-ajouter-commentaire input { flex: 1; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); padding: 12px; border-radius: 8px; color: #fff; outline: none; }
+.form-ajouter-commentaire button { background: #0ea5e9; color: #fff; border: none; padding: 0 18px; border-radius: 8px; cursor: pointer; font-weight: 600; }
+.btn-fermer-popup { width: 100%; padding: 12px; background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.1); color: #fff; border-radius: 10px; cursor: pointer; font-weight: 600; transition: 0.2s; }
+.btn-fermer-popup:hover { background: rgba(255, 255, 255, 0.2); }
+
+.todo-footer {
+  text-align: center;
+  margin-top: auto; /* Pousse automatiquement le footer tout en bas */
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--texte-secondaire);
+}
+
+.todo-footer p {
+  font-size: 1.15rem; /* Augmentation significative de la taille */
+  letter-spacing: 1px;
+}
+
+.nom-copyright {
+  color: #ff007f !important;
+  font-weight: 700;
+  text-transform: uppercase; /* Met ma signature en lettres majuscules majestueuses */
+  text-shadow: 0 0 10px rgba(255, 0, 127, 0.3);
+}
+
+/* Pour les tablettes et petits ordinateurs */
+@media (max-width: 1024px) {
+  .todo-coeur-layout {
+    flex-direction: column; /* La liste et le Kanban se mettent l'un sous l'autre */
+    overflow-y: auto; /* Permet de faire défiler toute la page */
+  }
+  
+  .dashboard-container-verre {
+    height: auto; /* La hauteur s'adapte au contenu qui s'empile */
+    max-height: 92vh;
+  }
+  
+  .colonne-kanban-board {
+    margin-top: 20px;
+  }
+}
+
+/* Pour les téléphones portables (Smartphones) */
+@media (max-width: 600px) {
+  .dashboard-container-verre {
+    width: 95vw; /* Occupe presque toute la largeur du téléphone */
+    padding: 20px 15px;
+    border-radius: 16px;
+  }
+
+  /* Ajustement du Header */
+  .todo-header {
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-start;
+  }
+
+  .titre-section h1 {
+    font-size: 1.8rem; /* Titre plus petit pour les petits écrans */
+  }
+
+  .barre-recherche {
+    width: 100%; /* La recherche prend toute la largeur sur mobile */
+  }
+
+  /* Ajustement de Main-1 */
+  .todo-main-1 {
+    flex-direction: column;
+    gap: 12px;
+    align-items: fill;
+  }
+
+  .horloge-bloc {
+    text-align: center;
+    font-size: 1rem;
+    padding: 8px 12px;
+  }
+
+  /* Colonnes Kanban sur mobile */
+  .kanban-colonnes-container {
+    flex-direction: column; /* Les colonnes à faire/en cours/terminé s'empilent */
+    gap: 15px;
+  }
+
+  /* Pop-up sur mobile */
+  .popup-verre-commentaires {
+    width: 90vw;
+    padding: 20px;
+  }
+
+  /* Copyright sur mobile */
+  .todo-footer p {
+    font-size: 0.9rem; /* Légèrement réduit pour tenir sur une seule ligne */
+  }
+}
+/* Forçage d'affichage propre pour les émojis sur Windows */
+.btn-action-tache, .btn-loupe, .horloge-bloc, .kanban-colonne h4, .liste-principale p {
+  font-family: "Segoe UI Emoji", "Apple Color Emoji", "Noto Color Emoji", sans-serif !important;
+}
+
